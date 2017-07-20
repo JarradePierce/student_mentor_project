@@ -5,18 +5,18 @@ class AvailabilitiesController < ApplicationController
 	end
 
 	def create
-		@availibility = Availability.new(availability_params)
-		if @availibility.save
-			redirect @availibility.mentor
+		@availability = Availability.new(availability_params)
+    @availability.mentor_id = params[:mentor][:id]
+		if @availability.save
+			redirect_to @availability.mentor
 		else
 			render "new"
 		end
 	end
 
-private
-	def availability_params
-		params.require(:availability).permit(:start_time, :mentor_id)
-	end
-
+  private
+  def availability_params
+    params.require(:availability).permit(:start_time, :mentor_id)
+  end
 
 end
