@@ -1,3 +1,9 @@
+Availability.delete_all
+Student.delete_all
+Mentor.delete_all
+Skill.delete_all
+
+
 Student.create(username: "Goose")
 
 Mentor.create(username: "Joshuah")
@@ -14,5 +20,9 @@ Skill.create(name: "Hummus eating")
 
 Mentor.first.skills << Skill.first
 Mentor.first.skills << Skill.second
+
+
+
+Availability.create(mentor: Mentor.first, start_time: DateTime.now)
 
 
