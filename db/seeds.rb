@@ -1,8 +1,21 @@
-Student.create(username: "Goose")
+Student.create(username: "Goose", email: "123@123.com", password: "123")
+Student.create(username: "Yun", email: "123@123.com", password: "123")
 
-Mentor.create(username: "Joshuah")
+Mentor.create(username: "Joshuah", email: "123@123.com", password: "123")
+Mentor.create(username: "Erika", email: "123@123.com", password: "123")
 
-Skill.create(name: "Awesomeness")
+
+5.times do 
+  Skill.create(name: Faker::Educator.course)
+end
+
+3.times do 
+  Availability.create(mentor: Mentor.all[rand(0..1)], start_time: Faker::Date.forward(rand(1..5))
+ ))
+end
+
+
+
 
 Mentor.first.availabilities.create(start_time: DateTime.now)
 
