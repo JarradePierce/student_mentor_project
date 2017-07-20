@@ -1,0 +1,12 @@
+<div class="mentor-name">
+  <h2><%= @mentor.username %> - Phase: <%= @mentor.phase %></h2>
+</div>
+<div class="skill-list">
+  <h3> Skills </h3>
+  <%= render partial: "skill_list", locals: {mentor: @mentor} %>
+</div>
+
+<div class="availability-list">
+  <h3> Availabilities </h3>
+  <%= render partial: "availability_list", locals: {mentor: @mentor} %>
+</div>

@@ -36,10 +36,9 @@ ActiveRecord::Schema.define(version: 20170719222112) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.integer "rating"
-    t.integer "apppointment_id"
-    t.integer "feedbackable_id"
-    t.string "feedbackable_type"
     t.text "body"
+    t.integer "apppointment_id"
+    t.string "for"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
