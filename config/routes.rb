@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  resources :students
+  get '/sessions/new', to: 'sessions#create', as: 'session_create'
 
+  resources :students
 
 end

@@ -9,9 +9,11 @@ class StudentsController < ApplicationController
 
   def create
      @student = Student.new(student_params)
-     @student.save 
-
-     redirect_to student_path(@student)
+     if @student.save
+      redirect_to student_path(@student), notice: 'Account successfully created.'
+    else
+      render :new
+    end
   end
 
   def show
@@ -22,12 +24,10 @@ class StudentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_student
       @student = Student.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
       params.require(:student).permit(:username, :email, :password, :phase)
     end
