@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 20170719222112) do
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    t.integer "student_id"
-    t.integer "topic_id"
-    t.integer "mentor_id"
+    t.integer "student_id", null: false
+    t.integer "topic_id", null: false
+    t.integer "mentor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mentor_id"], name: "index_appointments_on_mentor_id"
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20170719222112) do
   end
 
   create_table "availabilities", force: :cascade do |t|
-    t.datetime "start_time"
-    t.integer "mentor_id"
+    t.datetime "start_time", null: false
+    t.integer "mentor_id", null: false
     t.integer "appointment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(version: 20170719222112) do
   end
 
   create_table "mentors", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
-    t.integer "phase"
+    t.string "username", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.integer "phase", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,16 +60,16 @@ ActiveRecord::Schema.define(version: 20170719222112) do
   end
 
   create_table "skills", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
-    t.integer "phase"
+    t.string "username", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.integer "phase", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
