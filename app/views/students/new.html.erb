@@ -1,0 +1,14 @@
+<h1>New Student</h1>
+
+<%= form_for @student do |f| %>
+Username: <%= f.text_field :username %> <br>
+
+Email: <%= f.text_field :email %> <br>
+
+Password: <%= f.password_field :password %> <br>
+
+Phase: <%= f.select :phase, [1,2,3] %> <br>
+
+<%= f.submit %>
+
+<% end %>
