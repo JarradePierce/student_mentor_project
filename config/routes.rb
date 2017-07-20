@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create', as: 'create_session'
   delete '/logout',  to: 'sessions#destroy', as: 'delete_session'
 
+
+  resources :appointments, only: [:create, :destroy]
+
 end
