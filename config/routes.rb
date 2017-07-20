@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  get '/sessions/new', to: 'sessions#create', as: 'session_create'
+  resources :students, only: [:create, :show, :new]
 
-  resources :students
+  get    '/login',   to: 'sessions#new', as: 'new_session'
+  post   '/login',   to: 'sessions#create', as: 'create_session'
+  delete '/logout',  to: 'sessions#destroy', as: 'delete_session'
 
 end

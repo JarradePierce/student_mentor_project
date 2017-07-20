@@ -1,12 +1,5 @@
 class StudentsController < ApplicationController
 
-  def index
-  end
-
-  def new
-    @student = Student.new 
-  end
-
   def create
      @student = Student.new(student_params)
      if @student.save
@@ -20,7 +13,8 @@ class StudentsController < ApplicationController
     set_student
   end
 
-  def delete
+  def new
+    @student = Student.new
   end
 
   private

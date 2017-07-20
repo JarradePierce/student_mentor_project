@@ -1,16 +1,20 @@
 class SessionsController < ApplicationController
-
+  def new
+  end
 
   def create
-    @student = Student.where(student_params)
-    if @student
+    @student = Student.find_by(student_params[:email])
+    if @student && @student.authenticate(student_params[:password])
       session[:user_id] = @user.id
       redirect_to student_path(@student)
     else
-      redirect_to student_login_path
+      flash[:notice] = "Login Failed"
+      render 'new'
     end
   end
 
+  def destroy
+  end
 
   private
   def set_student
@@ -18,6 +22,6 @@ class SessionsController < ApplicationController
   end
 
   def student_params
-    params.permit(:username, :email, :password, :phase)
+    params.permit(:username, :password)
   end
 end
