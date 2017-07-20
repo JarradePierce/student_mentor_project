@@ -1,33 +1,30 @@
 class StudentsController < ApplicationController
-
-  def index
-  end
-
-  def new
-    @student = Student.new 
-  end
-
   def create
      @student = Student.new(student_params)
-     @student.save 
-
-     redirect_to student_path(@student)
+     if @student.save
+      redirect_to student_path(@student), notice: 'Account successfully created.'
+    else
+      render :new
+    end
   end
 
   def show
     set_student
   end
-
-  def delete
+  
+  def login 
   end
 
+  def new
+    @student = Student.new
+  end
+
+
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_student
       @student = Student.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
       params.require(:student).permit(:username, :email, :password, :phase)
     end

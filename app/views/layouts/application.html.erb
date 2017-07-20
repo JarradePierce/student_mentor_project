@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>StudentMentor</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>StudentMentor</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+
+  <%= link_to 'Home', root_path %>
+
+  <%= yield %>
+</body>
 </html>

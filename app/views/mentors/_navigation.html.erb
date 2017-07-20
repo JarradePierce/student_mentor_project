@@ -1,0 +1,6 @@
+<% if session[:user_id] %>
+<%= link_to 'Logout', delete_session_path, method: :delete %>
+<% else %>
+<%= link_to 'Login as Mentor', mentors_login_path %>
+<%= link_to 'Signup as Mentor', new_mentor_path %>
+<% end %>
