@@ -3,4 +3,7 @@ class Appointment < ApplicationRecord
   belongs_to :student
   belongs_to :mentor
   belongs_to :topic, class_name: "Skill"
+
+  validates :student, :topic, :mentor, presence: true
+
 end
