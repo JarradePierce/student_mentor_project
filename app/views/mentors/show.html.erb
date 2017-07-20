@@ -1,6 +1,10 @@
-<div class="mentor-name">
+<div class="mentor-info">
   <h2><%= @mentor.username %> - Phase: <%= @mentor.phase %></h2>
+<h2>Info: </h2>
+<%= @mentor.username %><br>
+<%= @mentor.email %>
 </div>
+
 <div class="skill-list">
   <h3> Skills </h3>
   <%= render partial: "skill_list", locals: {mentor: @mentor} %>
@@ -14,3 +18,4 @@
 <dir class="add-availability-link">
 	<%= link_to "Add Availability", new_mentor_availability_path(@mentor)%>
 </dir>
+

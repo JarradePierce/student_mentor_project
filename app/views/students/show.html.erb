@@ -1,0 +1,50 @@
+<%= render 'navigation' %>
+
+<h1>Show Student</h1>
+<h2>Info: </h2>
+<%= @student.username %> <br>
+<%= @student.email %> <br>
+<%= @student.phase %> <br>
+
+<h2> Upcoming Appointments </h2>
+<ul>
+  <div>
+    <% @appointments.each do |app| %>
+    <li> <%= app.availabilities.first.start_time %> with <%= app.availabilities.first.mentor.username %> on <%= app.topic.name %></li>
+
+    <% end %> <br>
+  </div>
+</ul>
+
+
+
+<h2>Book Appointment</h2> 
+<ul>
+  <% @availabilities.each do |slot| %>
+  <% if slot.appointment_id == nil %>
+  <div>
+    <li><%= slot.mentor.username %></li>
+
+    <li><%= slot.start_time %></li>
+
+    <li>Skills:
+      <div>
+        <% slot.mentor.skills.each do |skill| %>
+        -<%=skill.name %> 
+        <%= form_for @appointment do |f| %>
+        <%= f.hidden_field(:availability_id, value: slot.id) %>
+        <%= f.hidden_field(:student_id, value: @student.id) %>
+        <%= f.hidden_field(:topic_id, value: skill.id) %>
+        <%= f.hidden_field(:mentor_id, value: slot.mentor.id) %>
+        <%= f.submit %>
+        <% end %><br>
+        <% end %>
+      </div>
+    </li>
+
+  </div> <br>
+  <% end %>
+  <% end %>
+
+
+</ul>
