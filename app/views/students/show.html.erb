@@ -1,13 +1,24 @@
 <%= render 'navigation' %>
 
 <h1>Show Student</h1>
-
 <h2>Info: </h2>
-<%= @student.username %>
-<%= @student.email %>
-<%= @student.phase %>
+<%= @student.username %> <br>
+<%= @student.email %> <br>
+<%= @student.phase %> <br>
 
-<h2>Book Appointment</h2>
+<h2> Upcoming Appointments </h2>
+<ul>
+  <div>
+    <% @appointments.each do |app| %>
+    <li> <%= app.availabilities.first.start_time %> with <%= app.availabilities.first.mentor.username %> on <%= app.topic.name %></li>
+
+    <% end %> <br>
+  </div>
+</ul>
+
+
+
+<h2>Book Appointment</h2> 
 <ul>
   <% @availabilities.each do |slot| %>
   <% if slot.appointment_id == nil %>

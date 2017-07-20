@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  include SessionsHelper
+
   def create
      @student = Student.new(student_params)
      if @student.save
@@ -11,6 +13,8 @@ class StudentsController < ApplicationController
   def show
     set_student
     @availabilities = Availability.all
+    @appointments = Appointment.all.where(student: student_current_user).sort_by {|app| app.availabilities.first.start_time}
+    
     @appointment = Appointment.new
   end
   

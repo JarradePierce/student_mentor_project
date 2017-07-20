@@ -1,5 +1,5 @@
-Student.create(username: "Goose", email: "123@123.com", password: "123")
-Student.create(username: "Yun", email: "123@123.com", password: "123")
+Student.create(username: "Goose", email: "123@123.com", password: "123", phase: 3)
+Student.create(username: "Yun", email: "123@123.com", password: "123", phase: 3)
 
 5.times do 
   Skill.create(name: Faker::Educator.course)
