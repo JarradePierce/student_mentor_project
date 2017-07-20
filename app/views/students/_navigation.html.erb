@@ -1,7 +1,9 @@
-
 <% if session[:user_id] %>
+<%= link_to 'Home', root_path %>
+<%= link_to 'Profile', student_current_user %>
 <%= link_to 'Logout', delete_session_path, method: :delete %>
 <% else %>
+<%= link_to 'Home', root_path %>
 <%= link_to 'Login as Student', students_login_path %>
 <%= link_to 'Signup as Student', new_student_path %>
 <% end %>
