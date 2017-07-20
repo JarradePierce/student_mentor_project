@@ -10,3 +10,7 @@
   <h3> Availabilities </h3>
   <%= render partial: "availability_list", locals: {mentor: @mentor} %>
 </div>
+
+<dir class="add-availability-link">
+	<%= link_to "Add Availability", new_mentor_availability_path(@mentor)%>
+</dir>
