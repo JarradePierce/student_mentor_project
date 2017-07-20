@@ -1,27 +1,40 @@
 class SessionsController < ApplicationController
-  def new
-  end
-
   def create
-    @student = Student.find_by(student_params[:email])
-    if @student && @student.authenticate(student_params[:password])
-      session[:user_id] = @user.id
-      redirect_to student_path(@student)
+    if params[:user] == 'student'
+      @student = Student.find_by(username: user_params[:username])
+      if @student && @student.authenticate(params[:session][:password])
+        session[:user_id] = @student.id
+        redirect_to student_path(@student)
+      else
+        p @student
+        flash[:notice] = "Login Failed"
+        redirect_to students_login_path
+      end
     else
-      flash[:notice] = "Login Failed"
-      render 'new'
+      @mentor = Mentor.find_by(username: user_params[:username])
+      if @mentor && @mentor.authenticate(params[:session][:password])
+        session[:user_id] = @mentor.id
+        redirect_to mentors_path(@mentor)
+      else
+        p @mentor
+        flash[:notice] = "Login Failed"
+        redirect_to mentors_login_path
+      end
+
     end
   end
 
-  def destroy
-  end
+    def destroy
+      session[:user_id] = nil
+      redirect_to root_path
+    end
 
-  private
-  def set_student
-    @student = Student.find(params[:id])
-  end
+    private
+    def set_student
+      @student = Student.find(params[:id])
+    end
 
-  def student_params
-    params.permit(:username, :password)
+    def user_params
+      params.require(:session).permit(:username, :password, :user)
+    end
   end
-end

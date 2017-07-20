@@ -1,5 +1,4 @@
 class StudentsController < ApplicationController
-
   def create
      @student = Student.new(student_params)
      if @student.save
@@ -12,10 +11,14 @@ class StudentsController < ApplicationController
   def show
     set_student
   end
+  
+  def login 
+  end
 
   def new
     @student = Student.new
   end
+
 
   private
     def set_student
