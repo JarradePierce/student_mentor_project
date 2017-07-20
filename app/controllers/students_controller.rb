@@ -10,6 +10,7 @@ class StudentsController < ApplicationController
 
   def show
     set_student
+    @availabilities = Availability.all
   end
   
   def login 

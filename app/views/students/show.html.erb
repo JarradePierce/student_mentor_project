@@ -4,3 +4,21 @@
 <%= @student.username %>
 <%= @student.email %>
 <%= @student.phase %>
+
+<h2>Book Appointment</h2>
+<ul>
+  <% @availabilities.each do |slot| %>
+  <div>
+    <li><%= slot.mentor.username %></li>
+    <li><%= slot.start_time %></li>
+    <li>Skills:
+      <div>
+        <% slot.mentor.skills.each do |skill| %>
+        -<%=skill.name %> <br>
+        <% end %>
+      </div>
+    </li>
+  </div> <br>
+  <% end %>
+
+</ul>
