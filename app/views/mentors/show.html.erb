@@ -8,6 +8,7 @@
 <div class="skill-list">
   <h3> Skills </h3>
   <%= render partial: "skill_list", locals: {mentor: @mentor} %>
+  <p><%= link_to "Add New Skill", new_mentor_skill_path(@mentor) %></p>
 </div>
 
 <div class="availability-list">
