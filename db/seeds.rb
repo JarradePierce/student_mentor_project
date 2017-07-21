@@ -33,3 +33,6 @@ Availability.create(mentor: Mentor.first, start_time: DateTime.now)
   Availability.create(mentor: Mentor.all[rand(0..1)], start_time: Faker::Date.forward(rand(1..5)))
 end
 
+Availability.create(mentor: Mentor.all[rand(0..1)], start_time: 10.days.from_now)
+
+
