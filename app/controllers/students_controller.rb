@@ -18,6 +18,14 @@ def show
 
   @appointments = Appointment.all.where(student: student_current_user).sort_by {|app| app.availabilities.first.start_time}
 
+  @past_appointments = @appointments.select do |app|
+      app.availabilities.first.start_time < DateTime.now
+  end
+
+  @future_appointments = @appointments.select do |app|
+    app.availabilities.first.start_time >= DateTime.now
+  end
+
   @appointment = Appointment.new
 end
 

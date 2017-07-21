@@ -7,6 +7,26 @@
 <%= @mentor.email %>
 </div>
 
+<h2> Upcoming Appointments </h2>
+<ul>
+  <div>
+    <% @future_appointments.each do |app| %>
+    <li> <%= app.availabilities.first.start_time %> with <%= app.availabilities.first.mentor.username %> on <%= app.topic.name %></li>
+
+    <% end %> <br>
+  </div>
+</ul>
+
+<h2> Past Appointments </h2>
+<ul>
+  <div>
+    <% @past_appointments.each do |app| %>
+    <li> <%= app.availabilities.first.start_time %> with <%= app.availabilities.first.mentor.username %> on <%= app.topic.name %></li>
+
+    <% end %> <br>
+  </div>
+</ul>
+
 <div class="skill-list">
   <h3> Skills </h3>
   <%= render partial: "skill_list", locals: {mentor: @mentor} %>
