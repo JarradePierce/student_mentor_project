@@ -4,13 +4,13 @@
 <h2>Info: </h2>
 <%= @student.username %> <br>
 <%= @student.email %> <br>
-<%= @student.phase %> <br>
+Phase - <%= @student.phase %> <br>
 
 <h2> Upcoming Appointments </h2>
 <ul>
   <div>
     <% @future_appointments.each do |app| %>
-    <li> <%= app.availabilities.first.start_time %> with <%= app.availabilities.first.mentor.username %> on <%= app.topic.name %></li>
+    <li> <%= app.availabilities.first.start_time.in_time_zone("Pacific Time (US & Canada)").strftime("%l:%M%P %A, %B %-m, %Y") %> with <%= app.availabilities.first.mentor.username %> on <%= app.topic.name %></li>
 
     <% end %> <br>
   </div>
@@ -20,26 +20,26 @@
 <ul>
   <div>
     <% @past_appointments.each do |app| %>
-    <li> <%= app.availabilities.first.start_time %> with <%= app.availabilities.first.mentor.username %> on <%= app.topic.name %></li>
+    <li> <%= app.availabilities.first.start_time.in_time_zone("Pacific Time (US & Canada)").strftime("%l:%M%P %A, %B %-m, %Y") %> with <%= app.availabilities.first.mentor.username %> on <%= app.topic.name %></li>
 
     <% end %> <br>
   </div>
 </ul>
 
 
-<h2>Book Appointment</h2> 
+<h2>Book Appointment</h2>
 <ul>
   <% @availabilities.each do |slot| %>
   <% if slot.appointment_id == nil %>
   <div>
     <li><%= slot.mentor.username %></li>
 
-    <li><%= slot.start_time %></li>
+    <li><%= slot.start_time.in_time_zone("Pacific Time (US & Canada)").strftime("%l:%M%P %A, %B %-m, %Y") %></li>
 
     <li>Skills:
       <div>
         <% slot.mentor.skills.each do |skill| %>
-        -<%=skill.name %> 
+        -<%=skill.name %>
         <%= form_for @appointment do |f| %>
         <%= f.hidden_field(:availability_id, value: slot.id) %>
         <%= f.hidden_field(:student_id, value: @student.id) %>

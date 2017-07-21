@@ -11,7 +11,7 @@
 <ul>
   <div>
     <% @future_appointments.each do |app| %>
-    <li> <%= app.availabilities.first.start_time %> with <%= app.availabilities.first.mentor.username %> on <%= app.topic.name %></li>
+    <li> <%= app.availabilities.first.start_time.in_time_zone("Pacific Time (US & Canada)").strftime("%l:%M%P %A, %B %-m, %Y") %> with <%= app.availabilities.first.mentor.username %> on <%= app.topic.name %></li>
 
     <% end %> <br>
   </div>
@@ -21,7 +21,7 @@
 <ul>
   <div>
     <% @past_appointments.each do |app| %>
-    <li> <%= app.availabilities.first.start_time %> with <%= app.availabilities.first.mentor.username %> on <%= app.topic.name %></li>
+    <li> <%= app.availabilities.first.start_time.in_time_zone("Pacific Time (US & Canada)").strftime("%l:%M%P %A, %B %-m, %Y") %> with <%= app.availabilities.first.mentor.username %> on <%= app.topic.name %></li>
 
     <% end %> <br>
   </div>
