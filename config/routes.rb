@@ -7,6 +7,12 @@ Rails.application.routes.draw do
 
   get '/students/login', to: 'students#login'
   get '/mentors/login', to: 'mentors#login'
+  
+  resources :mentors, only: [:show, :new, :create] do
+  	resources :availabilities
+  end
+
+  
 
   resources :students, only: [:create, :show, :new]
 
