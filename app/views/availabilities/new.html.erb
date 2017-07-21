@@ -1,7 +1,6 @@
 <h2>Add an Availability</h2>
 <%= form_for [@availability.mentor, @availability] do |f| %>
 	<%= f.datetime_select :start_time %>
-	<%= f.hidden_field :mentor %>
   <input type="hidden" name="mentor[id]" value="<%= @availability.mentor.id %>">
 	<%= f.submit "Add that!" %>
 <% end %>

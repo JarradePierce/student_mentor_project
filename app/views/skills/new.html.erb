@@ -1,0 +1,6 @@
+<h2>Add a New Skill</h2>
+<%= form_for [@mentor, @skill] do |f| %>
+  <%= f.text_field :name %>
+  <input type="hidden" name="mentor[mentor_id]" value="<%= @mentor.id %>">
+  <%= f.submit "Add Skill" %>
+<% end %>

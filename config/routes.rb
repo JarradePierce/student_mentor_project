@@ -21,8 +21,10 @@ Rails.application.routes.draw do
 
 
   resources :appointments, only: [:create, :destroy]
-    resources :mentors, only: [:show, :new, :create] do
+
+  resources :mentors, only: [:show, :new, :create] do
     resources :availabilities
+    resources :skills, only: [:new, :create]
   end
 
 end
