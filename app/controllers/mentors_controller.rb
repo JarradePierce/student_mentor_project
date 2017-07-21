@@ -2,6 +2,7 @@ class MentorsController < ApplicationController
   def create
      @mentor = Mentor.new(mentor_params)
      if @mentor.save
+      session[:user_id] = @mentor.id
       redirect_to mentor_path(@mentor), notice: 'Account successfully created.'
     else
       render :new

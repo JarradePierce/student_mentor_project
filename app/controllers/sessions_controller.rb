@@ -1,10 +1,12 @@
 class SessionsController < ApplicationController
+  include SessionsHelper
   def create
     if params[:user] == 'student'
       @student = Student.find_by(username: user_params[:username])
       if @student && @student.authenticate(params[:session][:password])
         session[:user_id] = @student.id
-        redirect_to student_path(@student)
+        redirect_to student_path(student_current_user)
+
       else
         p @student
         flash[:notice] = "Login Failed"
@@ -14,7 +16,7 @@ class SessionsController < ApplicationController
       @mentor = Mentor.find_by(username: user_params[:username])
       if @mentor && @mentor.authenticate(params[:session][:password])
         session[:user_id] = @mentor.id
-        redirect_to mentors_path(@mentor)
+        redirect_to mentor_path(mentor_current_user)
       else
         p @mentor
         flash[:notice] = "Login Failed"
